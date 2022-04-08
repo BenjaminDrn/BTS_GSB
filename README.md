@@ -33,16 +33,4 @@
 
 ## CREATE DATABASE 
 
-1. Login to mysql
-   ```sh
-   mysql -u yourUsername -p yourPassword
-
-2. Create database and select this
-   ```sh
-   CREATE DATABASE gsb && use gsb
-   ```
-
-3. Import sql to database 
-   ```sh
-   source database-gsb.sql
-   ```
+Create table `gsb` and import file `database-gsb.sql` into PhpMyAdmin
