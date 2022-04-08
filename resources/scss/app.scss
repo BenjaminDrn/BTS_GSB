@@ -1,0 +1,798 @@
+/* ============= IMPORT ============= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+@import 'settings';
+
+/* ============= GÉNÉRAL ============= */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+*,
+ ::before,
+ ::after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    font-family: $roboto;
+    font-size: $f-3;
+    background: $grey-1;
+    color: $grey-3;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: $f-1;
+}
+
+h1,
+h2,
+h3 {
+    font-family: $montserrat;
+    font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+p,
+a,
+button {
+    line-height: 1;
+}
+
+.hidden {
+    overflow: hidden
+}
+
+.bx {
+    @extend %flex;
+    font-size: 20px;
+}
+
+.btn {
+    @include flex-justify-content(center);
+    cursor: pointer;
+}
+
+.img_container {
+    overflow: hidden;
+    img {
+        width: 100%;
+    }
+}
+
+.content_block {
+    width: 100%;
+    background: $white-1;
+    padding: $p-4;
+    margin-bottom: $m-4;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px 0 rgba($color: $grey-2, $alpha: 0.05);
+}
+
+
+/* ============= FORM ============= */
+
+input,
+textarea,
+button,
+select {
+    font-size: $p-3;
+    font-family: $roboto;
+    border: 0;
+    background: transparent;
+    outline: none;
+}
+
+button {
+    @extend %flex;
+    padding: $p-3 $p-5;
+    margin: $m-4 auto 0 auto;
+    background: $blue-1;
+    color: $white-1;
+    border-radius: 30px;
+    .bx {
+        margin-right: $m-1;
+    }
+}
+
+.row {
+    @extend %flex;
+    width: 100%;
+    padding: $p-3;
+    margin-top: $m-4;
+    background: rgba($color: $grey-2, $alpha: 0.06);
+    border-radius: 5px;
+    select,
+    input,
+    textarea {
+        width: 100%;
+        resize: none;
+    }
+}
+
+
+/* ============= MAIN ============= */
+
+main {
+    min-height: calc(100vh - $header-height);
+    margin-bottom: $header-height;
+    @include laptop {
+        padding-left: 200px;
+        margin-bottom: 0;
+    }
+}
+
+
+/* ============= SECTIONS ============= */
+
+section,
+.modal_container {
+    width: 100%;
+    .container {
+        height: 100%;
+        padding: $p-5;
+        &_title {
+            margin-bottom: $m-4;
+        }
+        @include tablet {
+            padding: $pm-1 $pl-1;
+        }
+        @include laptop {
+            padding: $pm-1 $pxl-2;
+        }
+        @include desktop {
+            padding: $pm-1 $pxl-3;
+        }
+    }
+}
+
+
+/* ============= MODAL ============= */
+
+.modal_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+    background: $grey-1;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 100;
+    &.active_modal_container {
+        visibility: visible;
+        opacity: 1;
+    }
+    .modal_header {
+        height: 58px;
+        padding: $p-3;
+        @extend %flex;
+        background: $blue-1;
+        color: $white-1;
+        .bx {
+            font-size: $f-1;
+        }
+    }
+    .container {
+        height: auto;
+    }
+}
+
+
+/* ============= HEADER ============= */
+
+#header {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $header-height;
+    @include flex-justify-content(center);
+    background: $white-1;
+    z-index: 100;
+    box-shadow: 0px 0px 20px rgba($color: $grey-2, $alpha: 0.1);
+    @include laptop {
+        top: 0;
+        width: 200px;
+        height: 100vh;
+        padding: $p-4;
+    }
+    .navbar {
+        width: 100%;
+        height: 100%;
+        &_account_btn {
+            @extend %flex;
+        }
+        /* ===== NAVBAR LIST ===== */
+        &_list {
+            width: 100%;
+            height: 100%;
+            @include flex-justify-content(space-around);
+            @include laptop {
+                flex-direction: column;
+                justify-content: center;
+            }
+            .navbar_item {
+                position: relative;
+                height: 100%;
+                padding: 0 $p-1;
+                @include flex-justify-content(center);
+                text-align: center;
+                @include laptop {
+                    width: 100%;
+                    height: auto;
+                    padding: 0;
+                    margin: $m-3 0;
+                }
+                .navbar_link {
+                    color: $grey-3;
+                    @include laptop {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        flex-direction: row-reverse;
+                    }
+                    .bx {
+                        margin-bottom: $m-1;
+                        font-size: $f-1;
+                        @include laptop {
+                            margin: 0;
+                        }
+                    }
+                    span {
+                        display: block;
+                        font-size: $f-4;
+                        @include laptop {
+                            font-size: $f-3;
+                        }
+                    }
+                }
+            }
+            .navbar_item_active .navbar_link {
+                color: $blue-1;
+            }
+            .navbar_item_active::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: $blue-1;
+                @include laptop {
+                    width: 3px;
+                    height: 100%;
+                    left: - $p-4;
+                }
+            }
+        }
+    }
+}
+
+
+/* ============= HOME ============= */
+
+#home {
+    height: calc( 100vh - $header-height);
+    @include flex-justify-content(center);
+    .container {
+        height: auto;
+        &_title {
+            p {
+                margin-bottom: $m-2;
+            }
+            h1 {
+                margin-bottom: $mm-2;
+            }
+        }
+        ul {
+            @include tablet {
+                display: grid;
+                grid-template-columns: repeat(2, 49%);
+                gap: calc(2% + 10px) 2%;
+            }
+            li {
+                position: relative;
+                overflow: hidden;
+                margin-top: $m-4;
+                border-radius: 10px;
+                &:nth-of-type(1) {
+                    background: $blue-1;
+                }
+                &:nth-of-type(2) {
+                    background: #63cf53;
+                }
+                &:nth-of-type(3) {
+                    background: #ffc72c;
+                }
+                &:nth-of-type(4) {
+                    background: #e665b9;
+                }
+                @include tablet {
+                    margin-top: 0;
+                }
+            }
+            a {
+                width: 100%;
+                height: 70px;
+                padding: $p-3;
+                color: $white-1;
+                font-weight: 700;
+                font-size: 20px;
+                border-radius: 30px;
+                @include tablet {
+                    height: 90px;
+                    padding: $p-4;
+                }
+                .bx {
+                    position: absolute;
+                    bottom: -10px;
+                    right: -15px;
+                    font-size: 60px;
+                    opacity: 0.5;
+                    @include tablet {
+                        font-size: 80px;
+                        right: -20px;
+                    }
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient( to top, rgba(0, 0, 0, 0.1), transparent, rgba(255, 255, 255, 0.1));
+                }
+            }
+        }
+    }
+}
+
+
+/* ============= PRATICIENS ============= */
+
+#praticiens {
+    width: 100%;
+    padding-top: 118px;
+    background: $grey-1;
+    transition: $transition-format;
+    .search_container {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background: $white-1;
+        box-shadow: 0px 0px 20px rgba($color: $grey-2, $alpha: 0.1);
+        z-index: 50;
+        @include laptop {
+            width: calc(100% - 200px);
+        }
+        .search_header {
+            height: 58px;
+            padding: $p-3;
+            @include flex-justify-content(center);
+            background: $blue-1;
+            color: $white-1;
+            p {
+                font-weight: 500;
+            }
+        }
+        .search_bar {
+            position: relative;
+            width: 100%;
+            height: 60px;
+            @extend %flex;
+            .search_bar_container {
+                width: 100%;
+                &.search_input {
+                    width: calc(100% - 60px);
+                    @extend %flex;
+                    input[type="text"] {
+                        width: calc(100% - 50px);
+                        height: 60px;
+                    }
+                    .search_btn {
+                        width: 50px;
+                        height: 60px;
+                        @include flex-justify-content(center);
+                    }
+                }
+                &.search_filter {
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: calc(100vh - 138px);
+                    flex-wrap: wrap;
+                    .search_filter_bar {
+                        height: 60px;
+                        @extend %flex;
+                    }
+                    .list_filter {
+                        visibility: hidden;
+                        opacity: 0;
+                        height: calc(100vh - 198px);
+                        padding: $p-4;
+                        overflow: auto;
+                        background: $grey-1;
+                        @include laptop {
+                            height: calc(100vh - 118px);
+                        }
+                        li {
+                            position: relative;
+                            padding: $p-4 $p-5;
+                            background: $white-1;
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                top: 0;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                width: calc(100% - ($p-4 * 2));
+                                height: 1px;
+                                background: $grey-1;
+                            }
+                        }
+                    }
+                }
+                &.show_search_filter {
+                    left: 0;
+                    background: $white-1;
+                    .search_filter_bar {
+                        .search_btn_filter {
+                            background: $white-1;
+                            .bx {
+                                font-size: 24px;
+                            }
+                        }
+                    }
+                    .list_filter {
+                        visibility: visible;
+                        opacity: 1;
+                        .item_filter {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .search_btn_filter {
+                width: 40px;
+                height: 40px;
+                margin: $m-2;
+                @include flex-justify-content(center);
+                background: $grey-1;
+                border-radius: 50%;
+            }
+        }
+    }
+    .search_result {
+        height: calc(100vh - 198px);
+        padding: $p-3;
+        overflow: scroll;
+        @include tablet {
+            padding: $p-5;
+        }
+        @include laptop {
+            height: calc(100vh - 118px);
+            padding: $pm-2;
+        }
+        &_error {
+            height: 100%;
+            @include flex-justify-content(center);
+            font-size: $f-2;
+            color: rgba($color: $grey-4, $alpha: 0.3);
+        }
+        .search_result_praticien {
+            position: relative;
+            padding: $p-4;
+            background: $white-1;
+            color: $grey-4;
+            cursor: pointer;
+            &:not(:last-child)::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100% - ($p-4 * 2));
+                height: 1px;
+                background: $grey-1;
+            }
+            .img_container {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                background: $grey-1;
+                border-radius: 50%;
+                .bx {
+                    width: 100%;
+                    height: 100%;
+                    @include flex-justify-content(center);
+                    opacity: 0.5;
+                }
+            }
+            .result_praticien_card {
+                @extend %flex;
+                margin-bottom: $m-2;
+                .result_praticien_infos {
+                    margin-left: $m-2;
+                    p:nth-of-type(1) {
+                        margin-bottom: $m-1;
+                    }
+                    p:nth-of-type(2) {
+                        font-size: $f-4;
+                        opacity: 0.7;
+                    }
+                }
+            }
+            .result_praticien_location {
+                @extend %flex;
+                p {
+                    font-size: $f-4;
+                    margin-left: $m-1;
+                }
+                p,
+                .bx {
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+}
+
+
+/* ============= MODAL PROFIL PRATICIEN ============= */
+
+#profil-praticien {
+    .profil_header {
+        height: 58px;
+        padding: $p-3;
+        @extend %flex;
+        background: $blue-1;
+        color: $white-1;
+        .bx {
+            font-size: $f-1;
+        }
+    }
+    .container {
+        height: calc(100vh - 58px);
+        .profil_praticien_container {
+            .img_container {
+                .bx {
+                    @include flex-justify-content(center);
+                    width: 100px;
+                    height: 100px;
+                    background: rgba($color: $grey-2, $alpha: 0.06);
+                    border-radius: 50%;
+                    font-size: 50px;
+                    margin: 0 auto;
+                }
+            }
+            h3 {
+                text-align: center;
+                margin-top: $m-2;
+            }
+            .praticien_libelle {
+                text-align: center;
+                margin-top: $m-2;
+            }
+            .praticien_adresse,
+            .coef_notoriete {
+                margin-top: $mm-1;
+                padding-top: $p-3;
+                border-top: 1px solid rgba($color: $grey-2, $alpha: 0.2);
+                .title_container {
+                    @extend %flex;
+                    margin-bottom: $m-1;
+                    .bx {
+                        margin-right: $m-1;
+                    }
+                }
+                p {
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+}
+
+
+/* ============= RAPPORT DE VISITE ============= */
+
+#rapport-visite {
+    .content_block {
+        margin: 0;
+        .rapport_item {
+            background: rgba($color: $grey-2, $alpha: 0.06);
+            padding: $p-2 $p-3;
+            margin-top: $m-2;
+            border-radius: 8px;
+            @include flex-justify-content(space-between);
+            .rapport_infos {
+                p:nth-of-type(1) {
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    margin-bottom: $m-1;
+                }
+                p:nth-of-type(2) {
+                    font-size: $f-4;
+                    color: $grey-2;
+                }
+            }
+            .rapport_action {
+                @extend %flex;
+                .bx {
+                    padding: $p-2;
+                    margin-left: $m-1;
+                    border-radius: 8px;
+                    background: $grey-2;
+                    color: $white-1;
+                }
+            }
+        }
+    }
+}
+
+#new-rapport-visite {
+    .container {
+        padding-top: 0;
+    }
+    .content_block {
+        margin: 0;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: $m-4;
+            tr {
+                th {
+                    select,
+                    input {
+                        width: 100%;
+                        padding: 0;
+                        background: transparent;
+                    }
+                    &:nth-child(1) {
+                        width: calc(80% - 26px);
+                    }
+                    &:nth-child(2) {
+                        width: calc(20% - 26px);
+                    }
+                    &:nth-child(3) {
+                        width: 52px;
+                        cursor: pointer;
+                        background: $blue-1;
+                        color: $white-1;
+                        border: 1px solid $blue-1;
+                    }
+                }
+                td {
+                    &:nth-child(3) {
+                        max-width: 52px;
+                        cursor: pointer;
+                    }
+                    input {
+                        width: 100%;
+                        padding: 0;
+                        background: transparent;
+                    }
+                }
+                th,
+                td {
+                    padding: $p-3;
+                    border: 1px solid rgba($color: $grey-2, $alpha: 0.3);
+                }
+            }
+        }
+    }
+}
+
+
+/* ============= COMPTE ============= */
+
+#compte {
+    .content_block {
+        &_section {
+            p {
+                @extend %flex;
+                width: 100%;
+                position: relative;
+                .bx {
+                    margin-right: $m-2;
+                }
+            }
+            .row {
+                justify-content: space-between;
+                padding: 0;
+                background: transparent;
+                input {
+                    width: 100%;
+                    padding: $p-3;
+                    background: rgba($color: $grey-2, $alpha: 0.06);
+                    border-radius: 5px;
+                }
+            }
+            .row_adresse {
+                input {
+                    &:nth-of-type(1) {
+                        width: calc(70% - $m-4);
+                    }
+                    &:nth-of-type(2) {
+                        width: 30%;
+                    }
+                }
+            }
+        }
+    }
+    .logout {
+        padding: 0;
+        form>button {
+            width: 100%;
+            @extend %flex;
+            margin: 0;
+            padding: $p-4 $p-5;
+            line-height: 0;
+            background: transparent;
+            color: $grey-3;
+            border-radius: 0;
+            &:hover {
+                background: $red-1;
+                color: $white-1;
+            }
+        }
+    }
+}
+
+
+/* ============= LOGIN ============= */
+
+#login {
+    .container {
+        height: 100vh;
+        @include flex-justify-content(center);
+        .errors {
+            color: $red-1;
+            margin-bottom: $m-3;
+        }
+        .content_block {
+            max-width: 500px;
+            margin: 0 auto;
+            input {
+                display: block;
+                width: 100%;
+                padding: $p-3;
+                margin-top: $m-1;
+                margin-bottom: $m-3;
+                background: rgba($color: $grey-2, $alpha: 0.06);
+                border-radius: 8px;
+            }
+            button[type="submit"] {
+                margin-left: auto;
+                margin-right: 0;
+            }
+        }
+    }
+}

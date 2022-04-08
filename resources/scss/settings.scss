@@ -1,0 +1,125 @@
+/*=============PLACEHOLDERS=============*/
+
+// USE : @extend nameOfPlaceholder
+%flex {
+    display: flex;
+    align-items: center;
+}
+
+%flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+%transition {
+    transition: all 0.3s ease-in-out;
+}
+
+%fast-transition {
+    transition: all 0.2s ease-in-out;
+}
+
+
+/* ============= MIXINS ============= */
+
+// USE : @include nameOfFunction
+@mixin tablet {
+    @media screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media screen and (min-width: 992px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin flex-justify-content($justify-content) {
+    display: flex;
+    align-items: center;
+    justify-content: $justify-content;
+}
+
+
+/* ============= VARIABLES ============= */
+
+
+/* ========== COLORS ========== */
+
+$blue-1: #2C8EFF;
+$blue-2: #0062FF;
+$red-1: #DB4B4B;
+$red-2: #E00000;
+$grey-1: #f0f0f0;
+$grey-2: #46464C;
+$grey-3: #313138;
+$grey-4: #1C1C1D;
+$white-1: #ffffff;
+$white-2: rgba(255, 255, 255, 0.8);
+$white-3: rgba(255, 255, 255, 0.6);
+$white-4: rgba(255, 255, 255, 0.3);
+
+/* ========== Fonts ========== */
+
+$montserrat: 'Montserrat',
+sans-serif;
+$roboto: 'Roboto',
+sans-serif;
+
+/* ========== FONT-SIZE ========== */
+
+$f-1: 28px;
+$f-2: 22px;
+$f-3: 16px;
+$f-4: 12px;
+
+/* ========== WIDTH & HEIGHT NAVBAR ========== */
+
+$header-width: 80px;
+$header-height: 80px;
+
+/* ========== PADDING ========== */
+
+$p-1: 5px;
+$p-2: 10px;
+$p-3: 15px;
+$p-4: 20px;
+$p-5: 25px;
+// PADDING M
+$pm-1: 30px;
+$pm-2: 40px;
+// PADDING L
+$pl-1: 60px;
+// PADDING XL
+$pxl-1: 80px;
+$pxl-2: 120px;
+$pxl-3: 200px;
+
+/* ========== MARGIN ========== */
+
+$m-1: 5px;
+$m-2: 10px;
+$m-3: 15px;
+$m-4: 20px;
+$m-5: 25px;
+// MARGIN M
+$mm-1: 30px;
+$mm-2: 40px;
+// MARGIN L
+$ml-1: 60px;
+// MARGIN XL
+$mxl-1: 80px;
+$mxl-2: 120px;
+$mxl-3: 180px;
+
+/* ========== TRANSITION ========== */
+
+$transition-format: all 0.3s ease-in-out;
+$transition-format-fast: all 0.1s ease-in-out;
