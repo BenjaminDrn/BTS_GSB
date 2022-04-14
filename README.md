@@ -33,4 +33,4 @@
 
 ## CREATE DATABASE 
 
-Create table `gsb` and import file `database-gsb.sql` into PhpMyAdmin
+Create database `gsb` and import file `database-gsb.sql` into PhpMyAdmin
