@@ -34,3 +34,10 @@
 ## CREATE DATABASE 
 
 Create database `gsb` and import file `database-gsb.sql` into PhpMyAdmin
+
+## LOGIN
+
+Nom : Swiss<br>
+Date : 18/06/2003 
+
+
